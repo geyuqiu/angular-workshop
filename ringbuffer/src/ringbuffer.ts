@@ -1,14 +1,13 @@
 export class Ringbuffer<T> {
-    private buffer: T[] = []
+    public buffer: T[] = [];
 
     constructor(public readonly size: number) {
     }
 
     add(value: T): void {
-        if (this.count() >= this.size) {
+        if (this.buffer.length >= this.size)
             this.take();
-        }
-        this.buffer.push(value)
+        this.buffer.push(value);
     }
 
     take(): T | undefined {
