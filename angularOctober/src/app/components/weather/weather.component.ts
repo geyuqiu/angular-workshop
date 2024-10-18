@@ -18,7 +18,8 @@ export class WeatherComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.httpclient.get<WeatherApiResponse>(this.apiUrl)
+    this.httpclient
+      .get<WeatherApiResponse>(this.apiUrl)
       .subscribe(response => {
         this.weather = response.main
       })
