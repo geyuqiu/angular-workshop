@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Weather } from '../../models/weather';
 import { WeatherService } from '../../services/weather.service';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { EMPTY, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-weather',
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe, NgIf],
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.scss'
 })
 export class WeatherComponent implements OnInit {
-  weather = {} as Weather;
+  weather$: Observable<Weather> = EMPTY;
 
   constructor(private weatherService: WeatherService) {
   }
 
   ngOnInit(): void {
-    this.weatherService.fetchWeather().subscribe(weather => {
-      this.weather = weather
-      })
+    this.weatherService.fetchWeather();
   }
 }
