@@ -3,11 +3,12 @@ import { Weather } from '../../models/weather';
 import { WeatherService } from '../../services/weather.service';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { EMPTY, Observable } from 'rxjs';
+import { CelsiusPipe } from '../../celsius.pipe';
 
 @Component({
   selector: 'app-weather',
   standalone: true,
-  imports: [AsyncPipe, NgIf],
+  imports: [AsyncPipe, NgIf, CelsiusPipe],
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.scss'
 })
