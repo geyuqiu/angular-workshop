@@ -18,6 +18,6 @@ export class WeatherComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.weatherService.fetchWeather();
+    this.weather$ = this.weatherService.fetchWeather();
   }
 }
