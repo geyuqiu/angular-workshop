@@ -1,0 +1,12 @@
+@for (name of names; track name) {
+  <ng-container>hallo {{ name }}</ng-container>
+} @empty {
+  <ng-container>There are no names.</ng-container>
+}
+
+@for (name of noNames; track name) {
+  <p>hallo {{ name }}</p>
+} @empty {
+  <p>There are no names. </p>
+}
+
