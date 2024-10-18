@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-name-input',
@@ -8,13 +8,18 @@ import { Component } from '@angular/core';
   styleUrl: './name-input.component.scss'
 })
 export class NameInputComponent {
-  private inputValue = '';
+  inputValue = '';
+
+  @Output()
+  nameSubmitted = new EventEmitter<string>();
 
   onKey($event: KeyboardEvent) {
-    this.inputValue = ($event.target as HTMLInputElement).value;
+    this.inputValue = ($event.target as HTMLInputElement)
+      .value;
   }
 
   onEnter() {
     console.log('enter pressed', this.inputValue);
+    this.nameSubmitted.emit(this.inputValue);
   }
 }
