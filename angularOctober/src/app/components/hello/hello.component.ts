@@ -9,9 +9,10 @@ import { NgIf } from '@angular/common';
   styleUrl: './hello.component.scss'
 })
 export class HelloComponent {
-  @Input() name: string = '';
+  @Input()
+  name: string = '';
 
   get displayName(): string {
-    return this.name ? this.name : 'World';
+    return this.name || 'World';
   }
 }
