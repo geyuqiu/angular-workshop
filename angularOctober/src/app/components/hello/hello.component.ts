@@ -10,4 +10,8 @@ import { NgIf } from '@angular/common';
 })
 export class HelloComponent {
   @Input() name: string = '';
+
+  get displayName(): string {
+    return this.name ? this.name : 'World';
+  }
 }
