@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HelloComponent } from './hello.component';
+import { By } from '@angular/platform-browser';
 
 describe('HelloComponent', () => {
   let component: HelloComponent;
@@ -10,7 +11,7 @@ describe('HelloComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HelloComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(HelloComponent);
     component = fixture.componentInstance;
@@ -32,6 +33,24 @@ describe('HelloComponent', () => {
       const method = component.displayName;
 
       expect(method).toEqual(name);
+    });
+
+    it('returns "Hello World" as displayName when no name is given', () => {
+      expect(fixture.debugElement.query(By.css('#hello_word'))
+        .nativeElement.innerText
+      )
+        .toEqual('Hello World');
+    });
+
+    it('returns "Hello Sebastian" as displayName when name is "Sebastian"', () => {
+      component.name = 'Sebastian';
+      fixture.detectChanges();
+
+      const text = fixture.debugElement
+        .query(By.css('#hello_word'))
+        .nativeElement.innerText;
+
+      expect(text).toEqual('Hello Sebastian');
     });
   });
 });
